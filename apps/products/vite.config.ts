@@ -20,6 +20,7 @@ export default defineConfig(() => {
             requiredVersion: dependencies.react,
             singleton: true,
           },
+          "@zenith/ui": { singleton: true, requiredVersion: "0.1.0" },
         },
       }),
       react(),

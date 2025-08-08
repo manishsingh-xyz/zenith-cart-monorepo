@@ -9,5 +9,10 @@
     "build:host": "pnpm --filter host build",
     "build:products": "pnpm --filter products build"
   },
+  "workspaces": [
+    "packages/*",
+    "host",
+    "products"
+  ],
   "license": "MIT"
 }
