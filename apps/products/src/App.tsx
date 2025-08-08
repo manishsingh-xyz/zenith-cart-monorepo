@@ -4,7 +4,7 @@ import { ProductList } from "./pages/ProductsList";
 function App() {
   return (
     <>
-      <ProductList></ProductList>
+      <ProductList />
     </>
   );
 }
