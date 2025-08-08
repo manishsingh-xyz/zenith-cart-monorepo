@@ -1,0 +1,13 @@
+{
+  "name": "zenith-cart",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Monorepo for Zenith Cart micro frontend ecommerce app",
+  "scripts": {
+    "dev:host": "pnpm --filter host dev",
+    "dev:products": "pnpm --filter products dev",
+    "build:host": "pnpm --filter host build",
+    "build:products": "pnpm --filter products build"
+  },
+  "license": "MIT"
+}
