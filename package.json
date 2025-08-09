@@ -6,6 +6,7 @@
   "scripts": {
     "dev:host": "pnpm --filter host dev",
     "dev:products": "pnpm --filter products dev",
+    "dev:cart": "pnpm --filter cart dev",
     "build:host": "pnpm --filter host build",
     "build:products": "pnpm --filter products build"
   },

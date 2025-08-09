@@ -45,7 +45,10 @@ export default defineConfig({
       name: "products",
       filename: "remoteEntry.js",
       exposes: {
+        "./AppRoutes": "./src/routes.tsx",
         "./featured-products": "./src/components/FeaturedProductsList.tsx",
+        "./product-List": "./src/components/ProductList.tsx",
+        // "./ProductsApp": "./src/components/ProductsApp.tsx",
       },
       remotes: {
         container: {
@@ -57,9 +60,10 @@ export default defineConfig({
       shared: {
         react: { singleton: true, requiredVersion: "^19.1.1" },
         "react-dom": { singleton: true, requiredVersion: "^19.1.1" },
-        "react-redux": { singleton: true, requiredVersion: "^9.1.1" },
+        "react-router-dom": { singleton: true, requiredVersion: "6.22.3" },
         "@reduxjs/toolkit": { singleton: true, requiredVersion: "^2.8.2" },
         "@zenith/ui": { singleton: true, requiredVersion: "0.1.0" },
+        // "container/store": { singleton: true }, // <- host store
       },
     }),
   ],
