@@ -1,3 +1,4 @@
+// cart-mfe/vite.config.ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { federation } from "@module-federation/vite";
@@ -10,35 +11,30 @@ export default defineConfig({
   plugins: [
     react(),
     federation({
-      name: "container",
+      name: "cart",
       filename: "remoteEntry.js",
-      library: { type: "module" },
-      remotes: {
-        products: {
-          type: "module",
-          name: "products",
-          entry: "http://localhost:3000/remoteEntry.js",
-          entryGlobalName: "remote",
-          shareScope: "default",
-        },
-        cart: {
-          type: "module",
-          name: "cart",
-          entry: "http://localhost:5175/remoteEntry.js'",
-          entryGlobalName: "remote",
-          shareScope: "default",
-        },
-      },
       exposes: {
-        "./store": "./src/store/index.ts",
+        "./CartApp": "./src/components/CartApp.tsx",
+        "./routes": "./src/routes.tsx",
+      },
+      remotes: {
+        container: {
+          name: "container",
+          entry: "http://localhost:5173/remoteEntry.js",
+          type: "module", // ✅ must match host
+        },
       },
       shared: {
         react: { singleton: true, requiredVersion: "^19.1.1" },
         "react-dom": { singleton: true, requiredVersion: "^19.1.1" },
-        "react-router-dom": { singleton: true, requiredVersion: "6.22.3" },
         "react-redux": { singleton: true, requiredVersion: "^9.1.1" },
         "@reduxjs/toolkit": { singleton: true, requiredVersion: "^2.8.2" },
+        // "container/store": { singleton: true }, // <- host store
       },
     }),
   ],
+  server: {
+    port: 5175, // Custom port for Cart MFE
+  },
+  base: "http://localhost:5175/",
 });
